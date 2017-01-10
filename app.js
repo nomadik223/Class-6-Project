@@ -39,3 +39,42 @@ pike.listHours = function () {
   pikeInfo.appendChild(total);
 };
 pike.listHours();
+
+var seatac = {
+  min: 3,
+  max: 24,
+  avg: 1.2,
+  hourlyCust: [],
+  hourlySales: [],
+  total: 0
+};
+
+seatac.generateRandomNum = function (min, max) {
+  for (var i = 0; i < hours.length; i++) {
+    var oneHour = Math.floor(Math.random() * (max - min + 1)) + min;
+    seatac.hourlyCust.push(oneHour);
+  };
+};
+seatac.generateRandomNum(seatac.min,seatac.max);
+
+seatac.calculateHourlySales = function (hourlyCust, avg) {
+  for (var i = 0; i < hourlyCust.length; i++) {
+    var saleHour = Math.floor(hourlyCust[i] * avg);
+    seatac.hourlySales.push(saleHour);
+    seatac.total += saleHour;
+  };
+};
+seatac.calculateHourlySales(seatac.hourlyCust, seatac.avg);
+
+seatac.listHours = function () {
+  var seatacInfo = document.getElementById('seatacInfo');
+  for (var i = 0; i < seatac.hourlyCust.length; i++) {
+    var listItem = document.createElement('li');
+    listItem.textContent = hours[i] + ' Sales - ' + seatac.hourlySales[i];
+    seatacInfo.appendChild(listItem);
+  };
+  var total = document.createElement('ul');
+  total.textContent = 'Total - ' + seatac.total;
+  seatacInfo.appendChild(total);
+};
+seatac.listHours();
