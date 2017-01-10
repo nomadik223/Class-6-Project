@@ -1,0 +1,36 @@
+* {
+  font-family: Georgia;
+  background-color: #888;
+}
+
+.picture {
+  width: 100%;
+}
+
+section {
+  float: left;
+  padding: 30px;
+}
+
+li {
+  color: #F2A38A;
+  font-family: Helvetica;
+  background-color: rgba(20, 8, 0, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+}
+
+ul {
+  color: #111;
+  font-family: Helvetica;
+  padding-top: 10px;
+}
+
+h1 {
+  color: #483029;
+  font-family: 'Courgette', cursive;
+}
+
+h2 {
+  color: #CB5405;
+}
