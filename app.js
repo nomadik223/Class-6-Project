@@ -174,3 +174,46 @@ capHill.listHours = function () {
   capHillInfo.appendChild(total);
 };
 capHill.listHours();
+
+//Alki Object
+var alki = {
+  min: 2,
+  max: 16,
+  avg: 4.6,
+  hourlyCust: [],
+  hourlySales: [],
+  total: 0
+};
+
+//Alki Customer generator
+alki.generateRandomNum = function (min, max) {
+  for (var i = 0; i < hours.length; i++) {
+    var oneHour = Math.floor(Math.random() * (max - min + 1)) + min;
+    alki.hourlyCust.push(oneHour);
+  };
+};
+alki.generateRandomNum(alki.min,alki.max);
+
+//Alki Hourly sales
+alki.calculateHourlySales = function (hourlyCust, avg) {
+  for (var i = 0; i < hourlyCust.length; i++) {
+    var saleHour = Math.floor(hourlyCust[i] * avg);
+    alki.hourlySales.push(saleHour);
+    alki.total += saleHour;
+  };
+};
+alki.calculateHourlySales(alki.hourlyCust, alki.avg);
+
+//Alki write in document
+alki.listHours = function () {
+  var alkiInfo = document.getElementById('alkiInfo');
+  for (var i = 0; i < alki.hourlyCust.length; i++) {
+    var listItem = document.createElement('li');
+    listItem.textContent = hours[i] + ' Sales - ' + alki.hourlySales[i];
+    alkiInfo.appendChild(listItem);
+  };
+  var total = document.createElement('ul');
+  total.textContent = 'Total - ' + alki.total;
+  alkiInfo.appendChild(total);
+};
+alki.listHours();
