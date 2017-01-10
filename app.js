@@ -17,6 +17,7 @@ var pike = {
 pike.generateRandomNum = function (min, max) {
   for (var i = 0; i < hours.length; i++) {
     var oneHour = Math.floor(Math.random() * (max - min + 1)) + min;
+    console.log(oneHour + ' Pike sales/hour');
     pike.hourlyCust.push(oneHour);
   };
 };
@@ -60,6 +61,7 @@ var seatac = {
 seatac.generateRandomNum = function (min, max) {
   for (var i = 0; i < hours.length; i++) {
     var oneHour = Math.floor(Math.random() * (max - min + 1)) + min;
+    console.log(oneHour + ' Seatac sales/hour');
     seatac.hourlyCust.push(oneHour);
   };
 };
@@ -103,6 +105,7 @@ var center = {
 center.generateRandomNum = function (min, max) {
   for (var i = 0; i < hours.length; i++) {
     var oneHour = Math.floor(Math.random() * (max - min + 1)) + min;
+    console.log(oneHour + ' Center sales/hour');
     center.hourlyCust.push(oneHour);
   };
 };
@@ -146,6 +149,7 @@ var capHill = {
 capHill.generateRandomNum = function (min, max) {
   for (var i = 0; i < hours.length; i++) {
     var oneHour = Math.floor(Math.random() * (max - min + 1)) + min;
+    console.log(oneHour + ' CapHill sales/hour');
     capHill.hourlyCust.push(oneHour);
   };
 };
@@ -189,6 +193,7 @@ var alki = {
 alki.generateRandomNum = function (min, max) {
   for (var i = 0; i < hours.length; i++) {
     var oneHour = Math.floor(Math.random() * (max - min + 1)) + min;
+    console.log(oneHour + ' Alki sales/hour');
     alki.hourlyCust.push(oneHour);
   };
 };
