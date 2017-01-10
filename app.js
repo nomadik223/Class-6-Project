@@ -1,6 +1,9 @@
 'use strict';
 
+//Hours array
 var hours = ['6am:', '7am:', '8am:', '9am:', '10am:', '11am:', '12pm:', '1pm:', '2pm:', '3pm:', '4pm:', '5pm:', '6pm:', '7pm:', '8pm:'];
+
+//Pike Place object
 var pike = {
   min: 23,
   max: 65,
@@ -10,6 +13,7 @@ var pike = {
   total: 0
 };
 
+//Pike Place customer generator
 pike.generateRandomNum = function (min, max) {
   for (var i = 0; i < hours.length; i++) {
     var oneHour = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -18,6 +22,7 @@ pike.generateRandomNum = function (min, max) {
 };
 pike.generateRandomNum(pike.min,pike.max);
 
+//Pike Place hourly sales
 pike.calculateHourlySales = function (hourlyCust, avg) {
   for (var i = 0; i < hourlyCust.length; i++) {
     var saleHour = Math.floor(hourlyCust[i] * avg);
@@ -27,6 +32,7 @@ pike.calculateHourlySales = function (hourlyCust, avg) {
 };
 pike.calculateHourlySales(pike.hourlyCust, pike.avg);
 
+//Pike Place revenue
 pike.listHours = function () {
   var pikeInfo = document.getElementById('pikeInfo');
   for (var i = 0; i < pike.hourlyCust.length; i++) {
@@ -40,6 +46,7 @@ pike.listHours = function () {
 };
 pike.listHours();
 
+//Seatac Airport object
 var seatac = {
   min: 3,
   max: 24,
@@ -49,6 +56,7 @@ var seatac = {
   total: 0
 };
 
+//Seatac Customer generator
 seatac.generateRandomNum = function (min, max) {
   for (var i = 0; i < hours.length; i++) {
     var oneHour = Math.floor(Math.random() * (max - min + 1)) + min;
@@ -57,6 +65,7 @@ seatac.generateRandomNum = function (min, max) {
 };
 seatac.generateRandomNum(seatac.min,seatac.max);
 
+//Seatac Hourly sales
 seatac.calculateHourlySales = function (hourlyCust, avg) {
   for (var i = 0; i < hourlyCust.length; i++) {
     var saleHour = Math.floor(hourlyCust[i] * avg);
@@ -66,6 +75,7 @@ seatac.calculateHourlySales = function (hourlyCust, avg) {
 };
 seatac.calculateHourlySales(seatac.hourlyCust, seatac.avg);
 
+//Seatac revenue
 seatac.listHours = function () {
   var seatacInfo = document.getElementById('seatacInfo');
   for (var i = 0; i < seatac.hourlyCust.length; i++) {
@@ -78,3 +88,46 @@ seatac.listHours = function () {
   seatacInfo.appendChild(total);
 };
 seatac.listHours();
+
+//Seattle Center object
+var center = {
+  min:11,
+  max: 38,
+  avg: 3.7,
+  hourlyCust: [],
+  hourlySales: [],
+  total: 0
+};
+
+//Center customer generator function
+center.generateRandomNum = function (min, max) {
+  for (var i = 0; i < hours.length; i++) {
+    var oneHour = Math.floor(Math.random() * (max - min + 1)) + min;
+    center.hourlyCust.push(oneHour);
+  };
+};
+center.generateRandomNum(center.min,center.max);
+
+//Center hour sales function
+center.calculateHourlySales = function (hourlyCust, avg) {
+  for (var i = 0; i < hourlyCust.length; i++) {
+    var saleHour = Math.floor(hourlyCust[i] * avg);
+    center.hourlySales.push(saleHour);
+    center.total += saleHour;
+  };
+};
+center.calculateHourlySales(center.hourlyCust, center.avg);
+
+//Center sales revenue
+center.listHours = function () {
+  var centerInfo = document.getElementById('centerInfo');
+  for (var i = 0; i < center.hourlyCust.length; i++) {
+    var listItem = document.createElement('li');
+    listItem.textContent = hours[i] + ' Sales - ' + center.hourlySales[i];
+    centerInfo.appendChild(listItem);
+  };
+  var total = document.createElement('ul');
+  total.textContent = 'Total - ' + center.total;
+  centerInfo.appendChild(total);
+};
+center.listHours();
