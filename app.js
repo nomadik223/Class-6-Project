@@ -32,7 +32,7 @@ pike.calculateHourlySales = function (hourlyCust, avg) {
 };
 pike.calculateHourlySales(pike.hourlyCust, pike.avg);
 
-//Pike Place revenue
+//Pike Place write in document
 pike.listHours = function () {
   var pikeInfo = document.getElementById('pikeInfo');
   for (var i = 0; i < pike.hourlyCust.length; i++) {
@@ -75,7 +75,7 @@ seatac.calculateHourlySales = function (hourlyCust, avg) {
 };
 seatac.calculateHourlySales(seatac.hourlyCust, seatac.avg);
 
-//Seatac revenue
+//Seatac write in document
 seatac.listHours = function () {
   var seatacInfo = document.getElementById('seatacInfo');
   for (var i = 0; i < seatac.hourlyCust.length; i++) {
@@ -118,7 +118,7 @@ center.calculateHourlySales = function (hourlyCust, avg) {
 };
 center.calculateHourlySales(center.hourlyCust, center.avg);
 
-//Center sales revenue
+//Center write in document
 center.listHours = function () {
   var centerInfo = document.getElementById('centerInfo');
   for (var i = 0; i < center.hourlyCust.length; i++) {
@@ -131,3 +131,46 @@ center.listHours = function () {
   centerInfo.appendChild(total);
 };
 center.listHours();
+
+//CapHoll object
+var capHill = {
+  min: 20,
+  max: 38,
+  avg: 2.3,
+  hourlyCust: [],
+  hourlySales: [],
+  total: 0
+};
+
+//capHill customer generator
+capHill.generateRandomNum = function (min, max) {
+  for (var i = 0; i < hours.length; i++) {
+    var oneHour = Math.floor(Math.random() * (max - min + 1)) + min;
+    capHill.hourlyCust.push(oneHour);
+  };
+};
+capHill.generateRandomNum(capHill.min,capHill.max);
+
+//CapHill hourly sales
+capHill.calculateHourlySales = function (hourlyCust, avg) {
+  for (var i = 0; i < hourlyCust.length; i++) {
+    var saleHour = Math.floor(hourlyCust[i] * avg);
+    capHill.hourlySales.push(saleHour);
+    capHill.total += saleHour;
+  };
+};
+capHill.calculateHourlySales(capHill.hourlyCust, capHill.avg);
+
+//CapHill write in document
+capHill.listHours = function () {
+  var capHillInfo = document.getElementById('capHillInfo');
+  for (var i = 0; i < capHill.hourlyCust.length; i++) {
+    var listItem = document.createElement('li');
+    listItem.textContent = hours[i] + ' Sales - ' + capHill.hourlySales[i];
+    capHillInfo.appendChild(listItem);
+  };
+  var total = document.createElement('ul');
+  total.textContent = 'Total - ' + capHill.total;
+  capHillInfo.appendChild(total);
+};
+capHill.listHours();
