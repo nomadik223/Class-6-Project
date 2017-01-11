@@ -72,60 +72,90 @@ var renderTableRow = function(stands) {
   locationInfo.appendChild(trEl);
 };
 
-function renderTotals() {
-  totalsRow = [];
-  totalsRow[0] = 'Totals: ';
-  var tmp = 0;
-  //get totals total
-  for (var i = 0; i < openLocations.length; i++) {
-    tmp += openLocations[i].totalDailyCookieSales;
-  }
-  totalsRow[1] = tmp;
-  tmp = 0;
-  //get hourly totals
-  for (var h = 0; h < hours.length; h++) {
-    for (var l = 0; l < openLocations.length; l++) {
-      tmp += openLocations[l].cookiesEachHourArray[h];
-    }
-    totalsRow.push(tmp);
-  }
-  //display totalsRow
-  var tableEl = document.getElementById('locationInfo');
-  var trEl = document.createElement('tr');
-  for(var i = 0; i < totalsRow.length; i++) {
-    var tdEl = document.createElement('td');
-    tdEl.textContent = totalsRow[i];
-    trEl.appendChild(tdEl);
-  }
-  tableEl.appendChild(trEl);
-}
+// function renderTotals() {
+//   totalsRow = [];
+//   totalsRow[0] = 'Totals: ';
+//   var tmp = 0;
+//   //get totals total
+//   for (var i = 0; i < openLocations.length; i++) {
+//     tmp += openLocations[i].totalDailyCookieSales;
+//   }
+//   totalsRow[1] = tmp;
+//   tmp = 0;
+//   //get hourly totals
+//   for (var h = 0; h < hours.length; h++) {
+//     for (var l = 0; l < openLocations.length; l++) {
+//       tmp += openLocations[l].cookiesEachHourArray[h];
+//     }
+//     totalsRow.push(tmp);
+//   }
+//   //display totalsRow
+//   var tableEl = document.getElementById('locationInfo');
+//   var trEl = document.createElement('tr');
+//   for(var i = 0; i < totalsRow.length; i++) {
+//     var tdEl = document.createElement('td');
+//     tdEl.textContent = totalsRow[i];
+//     trEl.appendChild(tdEl);
+//   }
+//   tableEl.appendChild(trEl);
+// }
 
 openLocations = [pike, seatac, center, capHill, alki];
+var formEl = document.getElementById('first-form'); // get form element
+
+formEl.addEventListener('submit', function(event) {
+  event.preventDefault(); // prevente default behavior of event. in this case reset page
+  event.stopPropagation();
+
+  var storeName = event.target.storeName.value;
+  console.log('Store name: ' + storeName);
+  var minCustPerHour = event.target.minCustPerHour.value;
+  console.log('Minimum customers per hour: ' + minCustPerHour);
+  var maxCustPerHour = event.target.maxCustPerHour.value;
+  console.log('Maximum customers per hour: ' + maxCustPerHour);
+  var avgCookiesPerCust = event.target.avgCookiesPerCust.value;
+  console.log('Average cookies per customer: ' + avgCookiesPerCust);
+
+  var newStore = new Store(storeName, minCustPerHour, maxCustPerHour, avgCookiesPerCust);
+  // create new store and put in array of stores, which adds its data to table
+  openLocations.push(newStore);
+
+  for (var i = 0; i < openLocations.length; i++) {
+    console.log(openLocations[i].toString());
+  }
+
+  newStore.calcCookiesEachHourArray();
+  renderTableRow(newStore);
+  //renderTotals();
+
+}, false);
 
 renderTableHeader();
 for (var i = 0; i < openLocations.length; i++) {
   openLocations[i].calcCookiesEachHourArray();
   renderTableRow(openLocations[i]);
 };
-renderTotals();
+//renderTotals();
 
-var myForm = document.getElementById('myForm');
-myForm.addEventListener('submit', function(event) {
-  event.preventDefault();
-  var name = document.getElementById('storeName');
-  var min = document.getElementById('min');
-  var max = document.getElementById('max');
-  var avg = document.getElementById('avg');
-  var tmpStore = new Store(name.value, parseFloat(min.value), parseFloat(max.value), parseFloat(avg.value));
-  openLocations.push(tmpStore);
-  var oldTable = document.getElementById('locationInfo');
-  while (oldTable.firstChild) {
-    oldTable.removeChild(oldTable.firstChild);
-  }
-  renderTableHeader();
-  for (var i = 0; i < openLocations.length; i++) {
-    openLocations[i].calcCookiesEachHourArray();
-    renderTableRow(openLocations[i]);
-  };
-  renderTotals();
-});
+// var myForm = document.getElementById('myForm');
+// myForm.addEventListener('submit', function(event) {
+//   event.preventDefault();
+//   var name = document.getElementById('storeName');
+//   var min = document.getElementById('min');
+//   var max = document.getElementById('max');
+//   var avg = document.getElementById('avg');
+//   var tmpStore = new Store(name.value, parseFloat(min.value), parseFloat(max.value), parseFloat(avg.value));
+//   openLocations.push(tmpStore);
+//   var oldTable = document.getElementById('locationInfo');
+//   while (oldTable.firstChild) {
+//     oldTable.removeChild(oldTable.firstChild);
+//   }
+//   renderTableHeader();
+//   for (var i = 0; i < openLocations.length; i++) {
+//     openLocations[i].calcCookiesEachHourArray();
+//     renderTableRow(openLocations[i]);
+//   };
+//   renderTotals();
+// });
+
+/************************ EVENT HANDLER CODE **********************************/
