@@ -1,0 +1,65 @@
+* {
+  font-family: Georgia;
+  background-color: #888;
+}
+
+.picture {
+  width: 50%;
+}
+
+img {
+  border-radius: 50px;
+  width: 300px;
+}
+
+section {
+  padding: 0px, 30px;
+  display: inline;
+}
+
+table {
+  color: #F2A38A;
+  font-family: Helvetica;
+  font-size: 30px;
+  background-color: rgba(20, 8, 0, 0.5);
+  padding: 10px;
+  border-radius: 10px;
+  margin: auto;
+  text-align: center;
+  width: ;
+}
+
+h1 {
+  color: #483029;
+  font-family: 'Courgette', cursive;
+  font-size: 80px;
+  text-align: center;
+  display: inline;
+  margin-left: 15px;
+}
+
+h2 {
+  color: #CB5405;
+  width: 100%;
+  font-size: 40px;
+}
+
+form {
+  margin-left: 130px;
+  padding: 15px;
+}
+
+input {
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+th {
+  font-size: 14px;
+  padding: 10px 2px;
+}
+
+td, tr {
+  font-size: 24px;
+  padding: 10px;
+}
