@@ -18,7 +18,8 @@ section {
 }
 
 table {
-  color: #F2A38A;
+  /*color: #F2A38A;*/
+  color: #FFFFFF;
   font-family: Helvetica;
   font-size: 30px;
   background-color: rgba(20, 8, 0, 0.5);

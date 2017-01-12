@@ -7,8 +7,8 @@ var totalsRow = [];
 function Store(locationName, minCustPerHour, maxCustPerHour, avgCookiesPerCust) {
   this.locationName = locationName;
   // this.identifier = identifier;
-  this.minCustPerHour = minCustPerHour;
-  this.maxCustPerHour = maxCustPerHour;
+  this.minCustPerHour = parseInt(minCustPerHour);
+  this.maxCustPerHour = parseInt(maxCustPerHour);
   this.avgCookiesPerCust = avgCookiesPerCust;
   this.custEachHourArray = [];
   this.cookiesEachHourArray = [];
@@ -103,8 +103,10 @@ var renderTableRow = function(stands) {
 openLocations = [pike, seatac, center, capHill, alki];
 var formEl = document.getElementById('first-form'); // get form element
 
-formEl.addEventListener('submit', function(event) {
-  event.preventDefault(); // prevente default behavior of event. in this case reset page
+formEl.addEventListener('submit', formElementSubmit, false);
+
+function formElementSubmit(event) {
+  event.preventDefault(); // prevent default behavior of event. in this case reset page
   event.stopPropagation();
 
   var storeName = event.target.storeName.value;
@@ -128,7 +130,7 @@ formEl.addEventListener('submit', function(event) {
   renderTableRow(newStore);
   //renderTotals();
 
-}, false);
+}
 
 renderTableHeader();
 for (var i = 0; i < openLocations.length; i++) {
