@@ -72,33 +72,33 @@ var renderTableRow = function(stands) {
   locationInfo.appendChild(trEl);
 };
 
-// function renderTotals() {
-//   totalsRow = [];
-//   totalsRow[0] = 'Totals: ';
-//   var tmp = 0;
-//   //get totals total
-//   for (var i = 0; i < openLocations.length; i++) {
-//     tmp += openLocations[i].totalDailyCookieSales;
-//   }
-//   totalsRow[1] = tmp;
-//   tmp = 0;
-//   //get hourly totals
-//   for (var h = 0; h < hours.length; h++) {
-//     for (var l = 0; l < openLocations.length; l++) {
-//       tmp += openLocations[l].cookiesEachHourArray[h];
-//     }
-//     totalsRow.push(tmp);
-//   }
-//   //display totalsRow
-//   var tableEl = document.getElementById('locationInfo');
-//   var trEl = document.createElement('tr');
-//   for(var i = 0; i < totalsRow.length; i++) {
-//     var tdEl = document.createElement('td');
-//     tdEl.textContent = totalsRow[i];
-//     trEl.appendChild(tdEl);
-//   }
-//   tableEl.appendChild(trEl);
-// }
+function renderTotals() {
+  totalsRow = [];
+  totalsRow[0] = 'Totals: ';
+  var tmp = 0;
+  //get totals total
+  for (var i = 0; i < openLocations.length; i++) {
+    tmp += openLocations[i].totalDailyCookieSales;
+  }
+  totalsRow[1] = tmp;
+  tmp = 0;
+  //get hourly totals
+  for (var h = 0; h < hours.length; h++) {
+    for (var l = 0; l < openLocations.length; l++) {
+      tmp += openLocations[l].cookiesEachHourArray[h];
+    }
+    totalsRow.push(tmp);
+  }
+  //display totalsRow
+  var tableEl = document.getElementById('locationInfo');
+  var trEl = document.createElement('tr');
+  for(var i = 0; i < totalsRow.length; i++) {
+    var tdEl = document.createElement('td');
+    tdEl.textContent = totalsRow[i];
+    trEl.appendChild(tdEl);
+  }
+  tableEl.appendChild(trEl);
+}
 
 openLocations = [pike, seatac, center, capHill, alki];
 var formEl = document.getElementById('first-form'); // get form element
@@ -128,7 +128,7 @@ function formElementSubmit(event) {
 
   newStore.calcCookiesEachHourArray();
   renderTableRow(newStore);
-  //renderTotals();
+  renderTotals();
 
 }
 
