@@ -1,6 +1,6 @@
 * {
   font-family: Georgia;
-  background-color: #888;
+  background-color: #222;
 }
 
 .picture {
@@ -18,11 +18,10 @@ section {
 }
 
 table {
-  /*color: #F2A38A;*/
-  color: #FFFFFF;
+  color: #F2A38A;
   font-family: Helvetica;
   font-size: 30px;
-  background-color: rgba(20, 8, 0, 0.5);
+  background-color: #646464;
   padding: 10px;
   border-radius: 10px;
   margin: auto;
@@ -31,7 +30,7 @@ table {
 }
 
 h1 {
-  color: #483029;
+  color: #db4332;
   font-family: 'Courgette', cursive;
   font-size: 80px;
   text-align: center;
@@ -43,6 +42,11 @@ h2 {
   color: #CB5405;
   width: 100%;
   font-size: 40px;
+}
+
+h3 {
+  color: #DB4332;
+  text-align: center;
 }
 
 form {
@@ -63,4 +67,21 @@ th {
 td, tr {
   font-size: 24px;
   padding: 10px;
+}
+
+a {
+  color: #DB4332;
+}
+
+#legendBox {
+  color: red;
+}
+
+#submit-button {
+  color: red;
+  background-color: white;
+}
+
+#form-section {
+  color: white;
 }
